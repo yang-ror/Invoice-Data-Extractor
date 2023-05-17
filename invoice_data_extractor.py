@@ -28,14 +28,17 @@ def read_invoice(pdf_name):
 	gui_data = []
 
 	for index, text in enumerate(content_by_line):
-		if 'BAGS' in text and 'KGS' in text and 'USD' in text: 
-			item_number = str(content_by_line[index - 1].split()[0])
-			invoice_nums = get_numbers(text)
-			gui_data.append({
-				'item': data[item_number],
-				'qty': invoice_nums[0],
-				'price': invoice_nums[1]
-			})
+		if not ('BAGS' in text and 'KGS' in text and 'USD' in text): 
+			continue
+			
+		item_number = str(content_by_line[index - 1].split()[0])
+		invoice_nums = get_numbers(text)
+
+		gui_data.append({
+			'item': data[item_number],
+			'qty': invoice_nums[0],
+			'price': invoice_nums[1]
+		})
 
 	return gui_data
 
