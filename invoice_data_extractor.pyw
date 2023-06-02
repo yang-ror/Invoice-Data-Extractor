@@ -154,7 +154,7 @@ def display_list(data):
 	label.pack()
 
 	root.geometry("310x260")
-
+	root.attributes("-topmost", True)
 	root.mainloop()
 
 
